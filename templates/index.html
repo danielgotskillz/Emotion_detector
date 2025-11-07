@@ -7,13 +7,25 @@
     <h1>Emotion Detection Web App</h1>
 
     <form action="/predict" method="post" enctype="multipart/form-data">
-        <input type="file" name="imagefile" required>
+        <label for="name">Enter your name:</label><br>
+        <input type="text" id="name" name="username" required><br><br>
+
+        <label for="mode">Select mode:</label><br>
+        <select id="mode" name="mode" required>
+            <option value="online">Online</option>
+            <option value="offline">Offline</option>
+        </select><br><br>
+
+        <label for="imagefile">Choose an image:</label><br>
+        <input type="file" name="imagefile" required><br><br>
+
         <input type="submit" value="Detect Emotion">
     </form>
 
     {% if prediction %}
-        <h2>Prediction: {{ prediction }}</h2>
+        <h2>Prediction for {{ name }} ({{ mode }} mode): {{ prediction }}</h2>
         <img src="{{ image }}" width="200">
     {% endif %}
 </body>
 </html>
+
